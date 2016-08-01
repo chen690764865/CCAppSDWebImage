@@ -1,0 +1,2 @@
+# CCAppSDWebImage
+仿SDWebImage框架实现一个简单的下载网络图片的功能的框架
