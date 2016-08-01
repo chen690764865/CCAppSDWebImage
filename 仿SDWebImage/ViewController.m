@@ -74,7 +74,7 @@
     //2.缓存池中没有cell的话就会去创建cell 在sb中注册cell
     
     //3.cell内容
-    
+//    cell.backgroundColor = [UIColor redColor];
     //4.返回cell
     return cell;
 }
