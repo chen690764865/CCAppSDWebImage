@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33419BEA1D5025FA00391F9B /* CCDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33419BE91D5025FA00391F9B /* CCDownloadManager.m */; };
+		33419BED1D50324900391F9B /* CCDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 33419BEC1D50324900391F9B /* CCDownloadOperation.m */; };
 		338056C31D4EF85500B69AA4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 338056C21D4EF85500B69AA4 /* main.m */; };
 		338056C61D4EF85500B69AA4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 338056C51D4EF85500B69AA4 /* AppDelegate.m */; };
 		338056C91D4EF85500B69AA4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 338056C81D4EF85500B69AA4 /* ViewController.m */; };
@@ -42,6 +44,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33419BE81D5025FA00391F9B /* CCDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDownloadManager.h; sourceTree = "<group>"; };
+		33419BE91D5025FA00391F9B /* CCDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDownloadManager.m; sourceTree = "<group>"; };
+		33419BEB1D50324900391F9B /* CCDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDownloadOperation.h; sourceTree = "<group>"; };
+		33419BEC1D50324900391F9B /* CCDownloadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDownloadOperation.m; sourceTree = "<group>"; };
 		338056BE1D4EF85500B69AA4 /* 仿SDWebImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "仿SDWebImage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		338056C21D4EF85500B69AA4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		338056C41D4EF85500B69AA4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -156,11 +162,15 @@
 		338056C11D4EF85500B69AA4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				33419BE81D5025FA00391F9B /* CCDownloadManager.h */,
+				33419BE91D5025FA00391F9B /* CCDownloadManager.m */,
 				338056C21D4EF85500B69AA4 /* main.m */,
 				338057261D4EFCF700B69AA4 /* CCAppInfoModel.h */,
 				338057271D4EFCF700B69AA4 /* CCAppInfoModel.m */,
 				338057291D4EFD2E00B69AA4 /* CCAppInfoCell.h */,
 				3380572A1D4EFD2E00B69AA4 /* CCAppInfoCell.m */,
+				33419BEB1D50324900391F9B /* CCDownloadOperation.h */,
+				33419BEC1D50324900391F9B /* CCDownloadOperation.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -324,6 +334,7 @@
 				338056C91D4EF85500B69AA4 /* ViewController.m in Sources */,
 				338057171D4EFB4800B69AA4 /* NSData+ImageContentType.m in Sources */,
 				3380570E1D4EFB4800B69AA4 /* NSString+Hash.m in Sources */,
+				33419BED1D50324900391F9B /* CCDownloadOperation.m in Sources */,
 				338057151D4EFB4800B69AA4 /* AFURLSessionManager.m in Sources */,
 				3380571F1D4EFB4800B69AA4 /* UIButton+WebCache.m in Sources */,
 				3380571C1D4EFB4800B69AA4 /* SDWebImageDownloaderOperation.m in Sources */,
@@ -338,6 +349,7 @@
 				338057101D4EFB4800B69AA4 /* AFHTTPSessionManager.m in Sources */,
 				3380571B1D4EFB4800B69AA4 /* SDWebImageDownloader.m in Sources */,
 				338057231D4EFB4800B69AA4 /* UIImageView+HighlightedWebCache.m in Sources */,
+				33419BEA1D5025FA00391F9B /* CCDownloadManager.m in Sources */,
 				3380571A1D4EFB4800B69AA4 /* SDWebImageDecoder.m in Sources */,
 				338057221D4EFB4800B69AA4 /* UIImage+WebP.m in Sources */,
 				3380571D1D4EFB4800B69AA4 /* SDWebImageManager.m in Sources */,

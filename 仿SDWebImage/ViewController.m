@@ -10,6 +10,7 @@
 #import "AFHTTPSessionManager.h"
 #import "CCAppInfoModel.h"
 #import "CCAppInfoCell.h"
+#import "CCDownloadManager.h"
 
 @interface ViewController ()
 /**
@@ -23,6 +24,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"%@",NSHomeDirectory());
     
     //获取网络数据
     [self loadData];
@@ -74,7 +76,19 @@
     //2.缓存池中没有cell的话就会去创建cell 在sb中注册cell
     
     //3.cell内容
-//    cell.backgroundColor = [UIColor redColor];
+    //获取对应cell的模型数据
+    CCAppInfoModel *info = self.infoData[indexPath.row];
+    cell.nameLabel.text = info.name;
+    cell.downloadLabel.text = info.download;
+    cell.iconView.image = nil;
+    
+    //初始化一个管理器对象
+    CCDownloadManager *manager = [CCDownloadManager sharedManager];
+    
+    //下载图片
+    [manager downloadImageWithURLString:info.icon completion:^(UIImage *image) {
+        cell.iconView.image = image;
+    }];
     //4.返回cell
     return cell;
 }
