@@ -27,4 +27,7 @@
  */
 -(void)downloadImageWithURLString:(NSString *)urlString completion:(void(^)(UIImage * image))completion;
 
+//取消操作执行的方法
+- (void)cancelOperationWithUrlString:(NSString*)urlString;
+
 @end

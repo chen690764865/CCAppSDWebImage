@@ -117,6 +117,18 @@
     [self.queue addOperation:op];
 }
 
+//取消操作执行的方法
+- (void)cancelOperationWithUrlString:(NSString*)urlString
+{
+    //取到操作
+    NSOperation *op = self.operationCache[urlString];
+    if (op != nil) {
+        [op cancel];
+        //将该操作从操作缓存中移除
+        [self.operationCache removeObjectForKey:urlString];
+    }
+}
+
 /**
  *  收到内存警告以后要做的事
  */
@@ -168,4 +180,14 @@
 //    }
 //    return _queue;
 //}
+
+#pragma mark - 实例对象销毁
+/**
+ *  移除通知
+ */
+- (void)dealloc
+{
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

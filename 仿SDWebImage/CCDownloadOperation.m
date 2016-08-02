@@ -34,7 +34,11 @@
  */
 - (void)main
 {
-
+    //判断操作的状态 如果是cancel状态的话,就不下载立即return
+    if ([self isCancelled]) {
+        return;
+    }
+    
     //在main方法里面下载图片并返回一张图片,.h里面应该有一个UIImage类型的图片属性
     //根据url字符串地址获取url地址
     NSURL* url = [NSURL URLWithString:self.urlString];

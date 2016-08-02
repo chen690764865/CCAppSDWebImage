@@ -11,6 +11,7 @@
 #import "CCAppInfoModel.h"
 #import "CCAppInfoCell.h"
 #import "CCDownloadManager.h"
+#import "UIImageView+CCImageView.h"
 
 @interface ViewController ()
 /**
@@ -83,12 +84,16 @@
     cell.iconView.image = nil;
     
     //初始化一个管理器对象
-    CCDownloadManager *manager = [CCDownloadManager sharedManager];
+//    CCDownloadManager *manager = [CCDownloadManager sharedManager];
+//    
+//    //下载图片
+//    [manager downloadImageWithURLString:info.icon completion:^(UIImage *image) {
+//        cell.iconView.image = image;
+//    }];
     
     //下载图片
-    [manager downloadImageWithURLString:info.icon completion:^(UIImage *image) {
-        cell.iconView.image = image;
-    }];
+    [cell.iconView cc_setImageWithURLString:info.icon placeholderImage:nil];
+    
     //4.返回cell
     return cell;
 }
