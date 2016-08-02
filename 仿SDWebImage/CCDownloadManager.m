@@ -39,6 +39,22 @@
     return instance;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+
+        //初始化两个缓存&一个队列
+        self.imageCache = [NSMutableDictionary dictionary];
+        self.operationCache = [NSMutableDictionary dictionary];
+        self.queue = [NSOperationQueue new];
+
+        //当收到内存警告的时候系统会发送UIApplicationDidReceiveMemoryWarningNotification通知,我们注册通知,在通知执行的方法里面移除缓存在内存中的东西就可以了
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(memoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+    }
+    return self;
+}
+
 - (void)downloadImageWithURLString:(NSString*)urlString completion:(void (^)(UIImage* image))completion
 {
     //断言:可以判断condition条件是否成立,如果不成立,程序会崩溃
@@ -73,8 +89,8 @@
     NSLog(@"初始化了一个操作下载图片");
     //1.初始化一个自定义操作
     CCDownloadOperation* op = [CCDownloadOperation operationWithURLString:urlString];
-    
-    __weak CCDownloadOperation *weakOP = op;
+
+    __weak CCDownloadOperation* weakOP = op;
     //2.监听图片下载完成
     [op setCompletionBlock:^{
         NSLog(@"图片下载完成");
@@ -101,41 +117,55 @@
     [self.queue addOperation:op];
 }
 
-#pragma mark - 懒加载
 /**
- *  图片缓存的懒加载
- *
- *  @return <#return value description#>
+ *  收到内存警告以后要做的事
  */
-- (NSMutableDictionary*)imageCache
+- (void)memoryWarning
 {
-    if (_imageCache == nil) {
-        _imageCache = [NSMutableDictionary dictionary];
-    }
-    return _imageCache;
+    NSLog(@"收到内存警告");
+    //1.清除图片缓存
+    [self.imageCache removeAllObjects];
+    //2.清楚操作缓存
+    [self.operationCache removeAllObjects];
+    //3.清楚队列中的所有的操作
+    [self.queue cancelAllOperations];
 }
 
-/**
- *  操作缓存的懒加载
- *
- *  @return <#return value description#>
- */
-- (NSMutableDictionary*)operationCache
-{
-    if (_operationCache == nil) {
-        _operationCache = [NSMutableDictionary dictionary];
-    }
-    return _operationCache;
-}
-
-/**
- *  全局队列的懒加载
- */
-- (NSOperationQueue*)queue
-{
-    if (_queue == nil) {
-        _queue = [NSOperationQueue new];
-    }
-    return _queue;
-}
+//#pragma mark - 懒加载
+///**
+// *  图片缓存的懒加载
+// *
+// *  @return <#return value description#>
+// */
+//- (NSMutableDictionary*)imageCache
+//{
+//    if (_imageCache == nil) {
+//        _imageCache = [NSMutableDictionary dictionary];
+//    }
+//    return _imageCache;
+//}
+//
+///**
+// *  操作缓存的懒加载
+// *
+// *  @return <#return value description#>
+// */
+//- (NSMutableDictionary*)operationCache
+//{
+//    if (_operationCache == nil) {
+//        _operationCache = [NSMutableDictionary dictionary];
+//    }
+//    return _operationCache;
+//}
+//
+///**
+// *  全局队列的懒加载
+// */
+//- (NSOperationQueue*)queue
+//{
+//    if (_queue == nil) {
+//        _queue = [NSOperationQueue new];
+//    }
+//    return _queue;
+//}
 @end
